@@ -6,3 +6,4 @@ Pequeno sistema para reserva de salas de reunião
  Tambem foi utiluzado uma biblioteca para substituir a classe DefaultTableModel:
  o projeto towel do Mark Vasconcelos(https://markytechs.wordpress.com/towel-project/)
  
+ Projeto feito utilizando as ferramentas da IDE Netbeans para construção do Swing
