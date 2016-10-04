@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lista_reservas" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dfe7bdd1-8129-4f7d-a3e9-ba8ce0649089">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[select r.id, s.nome, data_reserva, funcionario, descricao
+ from reservas r join salas s on r.id_sala = s.id
+order by s.nome, r.id]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="data_reserva" class="java.sql.Date"/>
+	<field name="funcionario" class="java.lang.String"/>
+	<field name="descricao" class="java.lang.String"/>
+	<group name="nome">
+		<groupExpression><![CDATA[$F{nome}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement uuid="80b37110-ef1c-4ff9-95e7-65a565d7b363" style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#006600"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement uuid="d8b9015f-60b5-4866-9e8d-03fee2935a9f" mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="944c90a0-0e13-41de-b365-c517c61f1405" style="Title" x="0" y="13" width="263" height="33"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Núcleo de Inovação Natura Amazônia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="582d1abd-9788-4063-a52f-b21312809e0c" style="SubTitle" x="100" y="46" width="174" height="22"/>
+				<textElement/>
+				<text><![CDATA[Reservas de Sala]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="498a54d4-e31d-4401-a93d-820e60a54818" x="274" y="4" width="300" height="64"/>
+				<imageExpression><![CDATA["leaf_banner_green.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement uuid="45823573-313a-4ad2-bc20-2985b39684fc" positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="48c31dbe-a38a-4e38-92b8-cc372c3532a3" style="Column header" x="0" y="19" width="138" height="15"/>
+				<textElement/>
+				<text><![CDATA[Número da Reserva]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="08bc9929-a40a-4c9d-9570-7baf939fe182" style="Column header" x="125" y="20" width="103" height="15"/>
+				<textElement/>
+				<text><![CDATA[Data da Reserva]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="50ac0d4a-7b7c-48b8-bd4f-764e50b644e8" style="Column header" x="243" y="19" width="90" height="15"/>
+				<textElement/>
+				<text><![CDATA[Reservado por]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5b6bc2c4-0d84-419a-b466-f5f02cc5a845" style="Column header" x="345" y="20" width="138" height="15"/>
+				<textElement/>
+				<text><![CDATA[Descricao]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement uuid="59561acc-0ae1-47d4-a2ca-6cd9317b9e31" positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement uuid="b4bd6469-0322-4ca1-b4e1-9d825250b2f0" style="Detail" x="0" y="0" width="64" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="28aeede8-f854-4963-a591-5d22be62b805" style="Detail" x="125" y="0" width="103" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{data_reserva}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="03d06ca8-9c3d-42a5-92cc-07b05a442a06" style="Detail" x="243" y="1" width="90" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{funcionario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="acbc6fb8-492f-45b7-930e-b965e5fee5c4" style="Detail" x="345" y="1" width="178" height="15"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement uuid="ad70598a-f388-4492-a3f7-5a5b6b5a652b" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="0411ef2a-e435-49d2-b8dc-8638ffb84b45" style="Column header" x="433" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="d50aa9cb-5e4a-4008-832c-f2de9ad5f075" style="Column header" x="513" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="372c4751-e1f3-4470-b7f8-1e20124ad742" style="Column header" x="0" y="0" width="197" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

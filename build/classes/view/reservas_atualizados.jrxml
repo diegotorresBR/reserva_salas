@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reservas_atualizados" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="445e268c-879b-4f75-aaaf-a54d6dbb6e1a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[SELECT r.id, inicio, fim, nome, funcionario, descricao
+  FROM reservas r join salas s on s.id = r.id_sala
+order by nome, inicio]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="inicio" class="java.sql.Timestamp"/>
+	<field name="fim" class="java.sql.Timestamp"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="funcionario" class="java.lang.String"/>
+	<field name="descricao" class="java.lang.String"/>
+	<group name="nome">
+		<groupExpression><![CDATA[$F{nome}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement uuid="353c55b9-77f7-44cb-890e-0e3d5ded7783" style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#333333"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement uuid="04b858ec-5256-4b60-9f60-45c972c16003" mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="618a9a26-09a6-4fe8-8d0f-d8a73c31b5c8" style="Title" x="91" y="18" width="263" height="33" forecolor="#663300"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Gill Sans Std" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[AQUI CONSTRUÍMOS
+UM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="503cecb0-b0aa-44d3-8dfb-61005f4c71ba" style="SubTitle" x="353" y="39" width="200" height="22" forecolor="#361D03"/>
+				<textElement textAlignment="Right">
+					<font fontName="Gill Sans Std"/>
+				</textElement>
+				<text><![CDATA[Lista de Reservas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="618a9a26-09a6-4fe8-8d0f-d8a73c31b5c8" style="Title" x="111" y="24" width="263" height="33" forecolor="#663300"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Gill Sans Std" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MUNDO MELHOR]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="498a54d4-e31d-4401-a93d-820e60a54818" x="2" y="0" width="83" height="70"/>
+				<imageExpression><![CDATA["natura.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="503cecb0-b0aa-44d3-8dfb-61005f4c71ba" style="SubTitle" x="275" y="2" width="280" height="22" forecolor="#361D03"/>
+				<textElement textAlignment="Right">
+					<font fontName="Gill Sans Std" size="14"/>
+				</textElement>
+				<text><![CDATA[Núcleo de Inovação Natura Amazônia]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="49" splitType="Stretch">
+			<line>
+				<reportElement uuid="97dcbdfe-ea42-4e26-8dc2-724032b47b4a" positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="aa3c136a-a7d3-441a-9258-aa948dad412b" style="Column header" x="0" y="19" width="98" height="30"/>
+				<textElement/>
+				<text><![CDATA[Número da Reserva]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dd5312bd-5158-4069-aadf-dabcb02291da" style="Column header" x="98" y="20" width="111" height="15"/>
+				<textElement/>
+				<text><![CDATA[Hora Início]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7e016f14-6a02-436d-b6a7-2f091a6ccec2" style="Column header" x="211" y="19" width="111" height="15"/>
+				<textElement/>
+				<text><![CDATA[Hora Final]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2e2eacdd-72e6-4e47-b6a0-0446119e7dc6" style="Column header" x="322" y="20" width="111" height="15"/>
+				<textElement/>
+				<text><![CDATA[Reservado por]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6e507a84-34de-43ac-8de6-284d7dd34932" style="Column header" x="431" y="20" width="111" height="15"/>
+				<textElement/>
+				<text><![CDATA[Descricao]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<line>
+				<reportElement uuid="97362a10-aadc-42c4-bf54-02d1ab533cdc" positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement uuid="43378b56-e502-4e8a-8b2c-6bd70eee585d" style="Detail" x="0" y="0" width="111" height="15"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="efd2a1d2-12f8-4f80-b333-ce9b3e626123" style="Detail" x="98" y="0" width="111" height="15"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="af4190f9-97f6-4f27-8112-51b39c269aa5" style="Detail" x="209" y="0" width="111" height="15"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fim}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2ccb47cd-58aa-4b92-9c2a-25ff5cd5326e" style="Detail" x="433" y="0" width="120" height="15" isRemoveLineWhenBlank="true"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e8ab4d57-f9f8-4cdd-9702-6aaede546934" style="Detail" x="320" y="1" width="111" height="15"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcionario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement uuid="efbea1c1-2c18-4bcd-b8a7-a0bc07448ef5" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="d282e8a2-678e-4702-ba99-f6bc88af1cd5" style="Column header" x="433" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="cd00b232-87b5-477f-90f5-ea7cd631fca2" style="Column header" x="513" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="99ff5d25-16ab-4474-afe8-3d6cc0364322" style="Column header" x="0" y="0" width="197" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
